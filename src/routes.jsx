@@ -1,30 +1,30 @@
-// Import necessary components and functions from react-router-dom.
+// Importar los componentes y funciones necesarias de react-router-dom.
 
 import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
 } from "react-router-dom";
 import { Layout } from "./pages/Layout";
-import { Home } from "./pages/Home";
+import Home from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 
 export const router = createBrowserRouter(
-    createRoutesFromElements(
-    // CreateRoutesFromElements function allows you to build route elements declaratively.
-    // Create your routes here, if you want to keep the Navbar and Footer in all views, add your new routes inside the containing Route.
-    // Root, on the contrary, create a sister Route, if you have doubts, try it!
-    // Note: keep in mind that errorElement will be the default page when you don't get a route, customize that page to make your project more attractive.
-    // Note: The child paths of the Layout element replace the Outlet component with the elements contained in the "element" attribute of these child paths.
+  createRoutesFromElements(
+    // La función createRoutesFromElements permite construir elementos de ruta de manera declarativa.
+    // Crea tus rutas aquí; si quieres mantener la Navbar y el Footer en todas las vistas, agrega tus nuevas rutas dentro de la Route contenedora.
+    // Root, en cambio, crea una Route hermana; si tienes dudas, ¡pruébalo!
+    // Nota: ten en cuenta que errorElement será la página por defecto cuando no encuentres una ruta, personaliza esa página para hacer tu proyecto más atractivo.
+    // Nota: Las rutas hijas del elemento Layout reemplazan el componente Outlet con los elementos contenidos en el atributo "element" de estas rutas hijas.
 
-      // Root Route: All navigation will start from here.
-      <Route path="/" element={<Layout />} errorElement={<h1>Not found!</h1>} >
+    // Ruta raíz: toda la navegación comenzará desde aquí.
+    <Route path="/" element={<Layout />} errorElement={<h1>¡No encontrado!</h1>} >
 
-        {/* Nested Routes: Defines sub-routes within the BaseHome component. */}
-        <Route path= "/" element={<Home />} />
-        <Route path="/single/:theId" element={ <Single />} />  {/* Dynamic route for single items */}
-        <Route path="/demo" element={<Demo />} />
-      </Route>
-    )
+      {/* Rutas anidadas: Define sub-rutas dentro del componente BaseHome. */}
+      <Route path="/" element={<Home />} />
+      <Route path="/:type/:id" element={<Single />} /> {/* Ruta dinámica para elementos individuales */}
+      <Route path="/demo" element={<Demo />} />
+    </Route>
+  )
 );
